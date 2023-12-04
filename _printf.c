@@ -10,7 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int a, string_count, b = 0, c = 0;
+	unsigned int a, string_count, b = 0;
 
 	va_list args;
 
@@ -30,28 +30,17 @@ int _printf(const char *format, ...)
 			bputchar(va_arg(args, int));
 			a++;
 		}
-		else if (format[a] == '%' && format[a + 1] == 's')
+		else if (format[a + 1] == 's')
 		{
 			string_count = putts(va_arg(args, char *));
 			a++;
 			b += (string_count - 1);
 		}
-		else if (format[a] == '%' && format[a + 1] == '%')
-		{
-			bputchar('%');
-			a++;
-		}
-		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
-		{
-			c += _put(va_args(args, int));
-			a++;
-			b += (c - 1);
-		}
-		else
+		else if (format[a + 1] == '%')
 		{
 			bputchar('%');
 		}
-
+		
 		b += 1;
 	}
 	va_end(args);
