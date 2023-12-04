@@ -9,5 +9,6 @@
 int bputchar(char c);
 int _printf(const char *format, ...);
 int putts(char *d);
+int _put(int n);
 
 #endif
