@@ -11,7 +11,7 @@ int _put(int n)
 {
 	int i = 0;
 
-	if (in < 0)
+	if (n < 0)
 	{
 	i += bputchar('-');
 	n = -n;
